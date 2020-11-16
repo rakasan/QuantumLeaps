@@ -1,0 +1,183 @@
+###############################################################################
+#
+# IAR ELF Linker V8.32.3.193/W32 for ARM                  16/Nov/2020  19:03:05
+# Copyright 2007-2019 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Projekte\QuantumLeaps\lesson_3\Debug\Exe\QuantumLeaps.out
+#    Map file     =  
+#        C:\Projekte\QuantumLeaps\lesson_3\Debug\List\QuantumLeaps.map
+#    Command line =  
+#        -f C:\Users\RacasanV\AppData\Local\Temp\EWC277.tmp
+#        (C:\Projekte\QuantumLeaps\lesson_3\Debug\Obj\main.o --no_out_extension
+#        -o C:\Projekte\QuantumLeaps\lesson_3\Debug\Exe\QuantumLeaps.out
+#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
+#        --map C:\Projekte\QuantumLeaps\lesson_3\Debug\List\QuantumLeaps.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.2\arm\config\linker\TexasInstruments\LM4F110C4QR.icf" --semihosting
+#        --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x0 { ro section .intvec };
+"P1":  place in [from 0x0 to 0xffff] { ro };
+define block CSTACK with size = 2K, alignment = 8 { };
+define block HEAP with size = 4K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'5fff] {
+          rw, block CSTACK, block HEAP };
+
+  Section          Kind         Address   Size  Object
+  -------          ----         -------   ----  ------
+"A0":                                     0x40
+  .intvec          ro code          0x0   0x40  vector_table_M.o [3]
+                                 - 0x40   0x40
+
+"P1":                                     0xf0
+  .text            ro code         0x40   0x3a  zero_init3.o [3]
+  .text            ro code         0x7a    0x2  vector_table_M.o [3]
+  .text            ro code         0x7c   0x28  main.o [1]
+  .text            ro code         0xa4   0x28  data_init.o [3]
+  .iar.init_table  const           0xcc   0x10  - Linker created -
+  .text            ro code         0xdc   0x1e  cmain.o [3]
+  .text            ro code         0xfa    0x4  low_level_init.o [2]
+  .text            ro code         0xfe    0x4  exit.o [2]
+  .text            ro code        0x104    0xa  cexit.o [3]
+  .text            ro code        0x110   0x14  exit.o [4]
+  .text            ro code        0x124    0xc  cstartup_M.o [3]
+  .rodata          const          0x130    0x0  zero_init3.o [3]
+                                - 0x130   0xf0
+
+"P2", part 1 of 2:                         0x4
+  .bss             zero     0x2000'0000    0x4  main.o [1]
+                          - 0x2000'0004    0x4
+
+"P2", part 2 of 2:                       0x800
+  CSTACK                    0x2000'0008  0x800  <Block>
+    CSTACK         uninit   0x2000'0008  0x800  <Block tail>
+                          - 0x2000'0808  0x800
+
+Unused ranges:
+
+         From           To    Size
+         ----           --    ----
+        0x130       0xffff  0xfed0
+  0x2000'0004  0x2000'0007     0x4
+  0x2000'0808  0x2000'5fff  0x57f8
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x4:
+          0x2000'0000   0x4
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+command line/config:
+    -------------------------------------------
+    Total:
+
+C:\Projekte\QuantumLeaps\lesson_3\Debug\Obj: [1]
+    main.o                 40                 4
+    -------------------------------------------
+    Total:                 40                 4
+
+dl7M_tln.a: [2]
+    exit.o                  4
+    low_level_init.o        4
+    -------------------------------------------
+    Total:                  8
+
+rt7M_tl.a: [3]
+    cexit.o                10
+    cmain.o                30
+    cstartup_M.o           12
+    data_init.o            40
+    vector_table_M.o       66
+    zero_init3.o           58
+    -------------------------------------------
+    Total:                216
+
+shb_l.a: [4]
+    exit.o                 20
+    -------------------------------------------
+    Total:                 20
+
+    Gaps                    4
+    Linker created                  16    2 048
+-----------------------------------------------
+    Grand Total:          288       16    2 052
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address  Size  Type      Object
+-----                       -------  ----  ----      ------
+.iar.init_table$$Base          0xcc         --   Gb  - Linker created -
+.iar.init_table$$Limit         0xdc         --   Gb  - Linker created -
+?main                          0xdd        Code  Gb  cmain.o [3]
+CSTACK$$Base            0x2000'0008         --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'0808         --   Gb  - Linker created -
+Region$$Table$$Base            0xcc         --   Gb  - Linker created -
+Region$$Table$$Limit           0xdc         --   Gb  - Linker created -
+__cmain                        0xdd        Code  Gb  cmain.o [3]
+__exit                        0x111  0x14  Code  Gb  exit.o [4]
+__iar_data_init3               0xa5  0x28  Code  Gb  data_init.o [3]
+__iar_program_start           0x125        Code  Gb  cstartup_M.o [3]
+__iar_zero_init3               0x41  0x3a  Code  Gb  zero_init3.o [3]
+__low_level_init               0xfb   0x4  Code  Gb  low_level_init.o [2]
+__vector_table                  0x0        Data  Gb  vector_table_M.o [3]
+_call_main                     0xe9        Code  Gb  cmain.o [3]
+_exit                         0x105        Code  Gb  cexit.o [3]
+_main                          0xf7        Code  Gb  cmain.o [3]
+counter                 0x2000'0000   0x4  Data  Gb  main.o [1]
+exit                           0xff   0x4  Code  Gb  exit.o [2]
+main                           0x7d  0x28  Code  Gb  main.o [1]
+
+
+[1] = C:\Projekte\QuantumLeaps\lesson_3\Debug\Obj
+[2] = dl7M_tln.a
+[3] = rt7M_tl.a
+[4] = shb_l.a
+
+    288 bytes of readonly  code memory
+     16 bytes of readonly  data memory
+  2 052 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,11 @@
+View locals-> shows the local variables
+View watch -> shows global variables
+
+int *p_int; #variable that stores an adress of the size of int
+p_int = &counter; # stocheaza adresa de la counter in p_int
+*p_int #acceseaza valoarea de la adresa p_int
+
+p_int = (int *)0x20000002U; /* pune adresa asta in p_int */
+*p_int #da-mi valoarea de la adresa salvata // de refenretiere
+
+The hardware block is switched off to save power. This tehnique is called clock gating: blocking the clock to several parts of the chip
