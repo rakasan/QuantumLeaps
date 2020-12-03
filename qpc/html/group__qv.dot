@@ -1,0 +1,17 @@
+digraph "QV"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=box];
+  rankdir=LR;
+  Node2 [label="QEP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__qep.html",tooltip="Hierarchical Event Processor."];
+  Node5 [label="QXK",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__qxk.html",tooltip="Preemptive Dual-Mode (Run-to-Completion/Blocking) RTOS Kernel."];
+  Node3 [label="QF",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__qf.html",tooltip="Active Object (Actor) Framework."];
+  Node4 [label="QK",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__qk.html",tooltip="Preemptive Run-To-Completion (Non-Blocking) Kernel."];
+  Node6 [label="QS",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__qs.html",tooltip="Software Tracing Instrumentation."];
+  Node1 [label="QV",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Cooperative Kernel."];
+  Node1->Node2 [shape=plaintext, label="qpc.h", color="darkgreen", dir="none", style="dashed"];
+  Node1->Node3 [shape=plaintext, label="qpc.h", color="darkgreen", dir="none", style="dashed"];
+  Node1->Node4 [shape=plaintext, label="qpc.h", color="darkgreen", dir="none", style="dashed"];
+  Node1->Node5 [shape=plaintext, label="qpc.h", color="darkgreen", dir="none", style="dashed"];
+  Node1->Node6 [shape=plaintext, label="qpc.h", color="darkgreen", dir="none", style="dashed"];
+}

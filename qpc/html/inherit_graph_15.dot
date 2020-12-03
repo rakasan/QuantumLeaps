@@ -1,0 +1,8 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="QSrxPrivAttr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qs__pkg_8h.html#struct_q_srx_priv_attr",tooltip="Private QS-RX attributes to keep track of the current objects and the lock-free RX buffer."];
+}

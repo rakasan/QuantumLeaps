@@ -11,7 +11,7 @@
             <name>General</name>
             <archiveVersion>3</archiveVersion>
             <data>
-                <version>31</version>
+                <version>30</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -32,11 +32,11 @@
                 </option>
                 <option>
                     <name>Input description</name>
-                    <state>Full formatting, without multibyte support.</state>
+                    <state>Full formatting.</state>
                 </option>
                 <option>
                     <name>Output description</name>
-                    <state>Full formatting, without multibyte support.</state>
+                    <state>Full formatting.</state>
                 </option>
                 <option>
                     <name>GOutputBinary</name>
@@ -66,7 +66,7 @@
                 </option>
                 <option>
                     <name>OGLastSavedByProductVersion</name>
-                    <state>8.32.2.19370</state>
+                    <state>8.20.2.14834</state>
                 </option>
                 <option>
                     <name>GeneralEnableMisra</name>
@@ -78,7 +78,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
-                    <state>TM4C123GE6PM	TexasInstruments TM4C123GE6PM</state>
+                    <state>TM4C123GH6PM	TexasInstruments TM4C123GH6PM</state>
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
@@ -112,11 +112,11 @@
                 </option>
                 <option>
                     <name>RTConfigPath2</name>
-                    <state>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</state>
+                    <state>$TOOLKIT_DIR$\INC\c\DLib_Config_Normal.h</state>
                 </option>
                 <option>
                     <name>GBECoreSlave</name>
-                    <version>27</version>
+                    <version>26</version>
                     <state>39</state>
                 </option>
                 <option>
@@ -133,12 +133,12 @@
                 </option>
                 <option>
                     <name>CoreVariant</name>
-                    <version>27</version>
+                    <version>26</version>
                     <state>39</state>
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
-                    <state>TM4C123GE6PM	TexasInstruments TM4C123GE6PM</state>
+                    <state>TM4C123GH6PM	TexasInstruments TM4C123GH6PM</state>
                 </option>
                 <option>
                     <name>FPU2</name>
@@ -156,7 +156,7 @@
                 </option>
                 <option>
                     <name>GFPUCoreSlave2</name>
-                    <version>27</version>
+                    <version>26</version>
                     <state>39</state>
                 </option>
                 <option>
@@ -204,18 +204,13 @@
                     <name>TrustZone</name>
                     <state>0</state>
                 </option>
-                <option>
-                    <name>TrustZoneModes</name>
-                    <version>0</version>
-                    <state>0</state>
-                </option>
             </data>
         </settings>
         <settings>
             <name>ICCARM</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>35</version>
+                <version>34</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -463,10 +458,6 @@
                     <name>IccRTTI2</name>
                     <state>0</state>
                 </option>
-                <option>
-                    <name>OICompilerExtraOption</name>
-                    <state>1</state>
-                </option>
             </data>
         </settings>
         <settings>
@@ -687,7 +678,7 @@
             <name>ILINK</name>
             <archiveVersion>0</archiveVersion>
             <data>
-                <version>22</version>
+                <version>20</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -999,14 +990,6 @@
                     <name>IlinkLocaleSelect</name>
                     <state>1</state>
                 </option>
-                <option>
-                    <name>IlinkTrustzoneImportLibraryOut</name>
-                    <state>project_import_lib.o</state>
-                </option>
-                <option>
-                    <name>OILinkExtraOption</name>
-                    <state>1</state>
-                </option>
             </data>
         </settings>
         <settings>
@@ -1051,7 +1034,7 @@
             <name>General</name>
             <archiveVersion>3</archiveVersion>
             <data>
-                <version>31</version>
+                <version>30</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -1084,7 +1067,7 @@
                 </option>
                 <option>
                     <name>OGCoreOrChip</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>GRuntimeLibSelect</name>
@@ -1118,7 +1101,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
-                    <state>default	None</state>
+                    <state>TM4C123GH6PM	TexasInstruments TM4C123GH6PM</state>
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
@@ -1156,8 +1139,8 @@
                 </option>
                 <option>
                     <name>GBECoreSlave</name>
-                    <version>27</version>
-                    <state>34</state>
+                    <version>26</version>
+                    <state>39</state>
                 </option>
                 <option>
                     <name>OGUseCmsis</name>
@@ -1173,22 +1156,22 @@
                 </option>
                 <option>
                     <name>CoreVariant</name>
-                    <version>27</version>
-                    <state>34</state>
+                    <version>26</version>
+                    <state>39</state>
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
-                    <state>default	None</state>
+                    <state>TM4C123GH6PM	TexasInstruments TM4C123GH6PM</state>
                 </option>
                 <option>
                     <name>FPU2</name>
                     <version>0</version>
-                    <state>0</state>
+                    <state>4</state>
                 </option>
                 <option>
                     <name>NrRegs</name>
                     <version>0</version>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>NEON</name>
@@ -1196,8 +1179,8 @@
                 </option>
                 <option>
                     <name>GFPUCoreSlave2</name>
-                    <version>27</version>
-                    <state>34</state>
+                    <version>26</version>
+                    <state>39</state>
                 </option>
                 <option>
                     <name>OGCMSISPackSelectDevice</name>
@@ -1244,18 +1227,13 @@
                     <name>TrustZone</name>
                     <state>0</state>
                 </option>
-                <option>
-                    <name>TrustZoneModes</name>
-                    <version>0</version>
-                    <state>0</state>
-                </option>
             </data>
         </settings>
         <settings>
             <name>ICCARM</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>35</version>
+                <version>34</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -1503,10 +1481,6 @@
                     <name>IccRTTI2</name>
                     <state>0</state>
                 </option>
-                <option>
-                    <name>OICompilerExtraOption</name>
-                    <state>1</state>
-                </option>
             </data>
         </settings>
         <settings>
@@ -1727,7 +1701,7 @@
             <name>ILINK</name>
             <archiveVersion>0</archiveVersion>
             <data>
-                <version>22</version>
+                <version>20</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -2039,14 +2013,6 @@
                     <name>IlinkLocaleSelect</name>
                     <state>1</state>
                 </option>
-                <option>
-                    <name>IlinkTrustzoneImportLibraryOut</name>
-                    <state>###Unitialized###</state>
-                </option>
-                <option>
-                    <name>OILinkExtraOption</name>
-                    <state>1</state>
-                </option>
             </data>
         </settings>
         <settings>
@@ -2086,6 +2052,9 @@
     </file>
     <file>
         <name>$PROJ_DIR$\main.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\startup_tm4c.c</name>
     </file>
     <file>
         <name>$PROJ_DIR$\tm4c_cmsis.h</name>

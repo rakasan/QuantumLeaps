@@ -35426,257 +35426,13 @@
     "scope": null
   },
   {
-    "ID": "c:@sqr",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "sqr",
-    "location": {
-      "column": "9",
-      "line": "13",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "name": "sqr",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@SA@Point",
-    "What": "Struct",
-    "defdec": "Def",
-    "display": "",
-    "location": {
-      "column": "9",
-      "line": "20",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "members": [
-      {
-        "ID": "c:@SA@Point@FI@y",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "y",
-        "location": {
-          "column": "13",
-          "line": "21",
-          "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-        },
-        "name": "y",
-        "origin": "project_file",
-        "scope": "_anonymous_main_c_20_9"
-      },
-      {
-        "ID": "c:@SA@Point@FI@x",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "x",
-        "location": {
-          "column": "14",
-          "line": "22",
-          "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-        },
-        "name": "x",
-        "origin": "project_file",
-        "scope": "_anonymous_main_c_20_9"
-      },
-      {
-        "ID": "c:main.c@T@Point",
-        "What": "TypedefDecl",
-        "defdec": "Def",
-        "display": "struct Point",
-        "location": {
-          "column": "3",
-          "line": "23",
-          "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-        },
-        "name": "Point",
-        "origin": "project_file",
-        "scope": "_anonymous_main_c_20_9"
-      }
-    ],
-    "name": "",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@p1",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "p1",
-    "location": {
-      "column": "7",
-      "line": "25",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "name": "p1",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@p2",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "p2",
-    "location": {
-      "column": "11",
-      "line": "25",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "name": "p2",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@SA@Window",
-    "What": "Struct",
-    "defdec": "Def",
-    "display": "",
-    "location": {
-      "column": "9",
-      "line": "27",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "members": [
-      {
-        "ID": "c:@SA@Window@FI@top_left",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "top_left",
-        "location": {
-          "column": "11",
-          "line": "28",
-          "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-        },
-        "name": "top_left",
-        "origin": "project_file",
-        "scope": "_anonymous_main_c_27_9"
-      },
-      {
-        "ID": "c:@SA@Window@FI@bottom_right",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "bottom_right",
-        "location": {
-          "column": "11",
-          "line": "29",
-          "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-        },
-        "name": "bottom_right",
-        "origin": "project_file",
-        "scope": "_anonymous_main_c_27_9"
-      },
-      {
-        "ID": "c:main.c@T@Window",
-        "What": "TypedefDecl",
-        "defdec": "Def",
-        "display": "struct Window",
-        "location": {
-          "column": "3",
-          "line": "30",
-          "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-        },
-        "name": "Window",
-        "origin": "project_file",
-        "scope": "_anonymous_main_c_27_9"
-      }
-    ],
-    "name": "",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@SA@Triangle",
-    "What": "Struct",
-    "defdec": "Def",
-    "display": "",
-    "location": {
-      "column": "9",
-      "line": "32",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "members": [
-      {
-        "ID": "c:@SA@Triangle@FI@corners",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "corners",
-        "location": {
-          "column": "12",
-          "line": "33",
-          "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-        },
-        "name": "corners",
-        "origin": "project_file",
-        "scope": "_anonymous_main_c_32_9"
-      },
-      {
-        "ID": "c:main.c@T@Triangle",
-        "What": "TypedefDecl",
-        "defdec": "Def",
-        "display": "struct Triangle",
-        "location": {
-          "column": "3",
-          "line": "34",
-          "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-        },
-        "name": "Triangle",
-        "origin": "project_file",
-        "scope": "_anonymous_main_c_32_9"
-      }
-    ],
-    "name": "",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@w",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "w",
-    "location": {
-      "column": "8",
-      "line": "36",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "name": "w",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@w2",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "w2",
-    "location": {
-      "column": "11",
-      "line": "36",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "name": "w2",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@t",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "t",
-    "location": {
-      "column": "10",
-      "line": "37",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "name": "t",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
     "ID": "c:@F@main",
     "What": "Function",
     "defdec": "Def",
     "display": "int main(void)",
     "location": {
       "column": "5",
-      "line": "39",
+      "line": "13",
       "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
     },
     "name": "main",
@@ -35684,30 +35440,16 @@
     "scope": null
   },
   {
-    "ID": "c:main.c@528@F@main@pp",
+    "ID": "c:main.c@227@F@main@t",
     "What": "Variable",
     "defdec": "Def",
-    "display": "pp",
+    "display": "t",
     "location": {
-      "column": "12",
-      "line": "40",
+      "column": "5",
+      "line": "14",
       "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
     },
-    "name": "pp",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:main.c@544@F@main@wp",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "wp",
-    "location": {
-      "column": "13",
-      "line": "41",
-      "path": "D:\\Repositories\\Projects\\QuantumLeaps\\lesson13\\main.c"
-    },
-    "name": "wp",
+    "name": "t",
     "origin": "project_file",
     "scope": null
   },

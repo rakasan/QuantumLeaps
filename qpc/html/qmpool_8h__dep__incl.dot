@@ -1,0 +1,27 @@
+digraph "qmpool.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="qmpool.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="QP native, platform-independent memory pool QMPool interface."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="qk.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qk_8h.html",tooltip="QK/C (preemptive non-blocking kernel) platform-independent public interface."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="qk_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qk__port_8h.html",tooltip="QK/C port example for a generic C compiler."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qk_2qf__port_8h.html",tooltip="QF/C port example for QK, generic C compiler."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="qv.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qv_8h.html",tooltip="QV/C (cooperative \"Vanilla\" kernel) platform-independent public interface."];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="qv_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qv__port_8h.html",tooltip="QV/C port example for a generic C compiler."];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qv_2qf__port_8h.html",tooltip="QF/C port example for QV, generic C compiler."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="qxk.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_8h.html",tooltip="QXK/C (preemptive dual-mode kernel) platform-independent public interface."];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="qxk_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk__port_8h.html",tooltip="QXK/C port example for a generic C compiler."];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_2qf__port_8h.html",tooltip="QF/C port example for QXK, generic C compiler."];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="qs_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_2qs__port_8h.html",tooltip="QS/C port to a 32-bit CPU and a generic C compiler."];
+}

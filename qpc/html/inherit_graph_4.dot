@@ -1,0 +1,8 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="QFreeBlock",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__pkg_8h.html#struct_q_free_block",tooltip="structure representing a free block in the Native QF Memory Pool"];
+}

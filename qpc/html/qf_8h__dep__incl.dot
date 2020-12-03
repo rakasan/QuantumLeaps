@@ -1,0 +1,15 @@
+digraph "qf.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="qf.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="QF/C platform-independent public interface."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qk_2qf__port_8h.html",tooltip="QF/C port example for QK, generic C compiler."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qv_2qf__port_8h.html",tooltip="QF/C port example for QV, generic C compiler."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_2qf__port_8h.html",tooltip="QF/C port example for QXK, generic C compiler."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="qs_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_2qs__port_8h.html",tooltip="QS/C port to a 32-bit CPU and a generic C compiler."];
+}

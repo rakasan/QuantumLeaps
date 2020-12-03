@@ -1,0 +1,21 @@
+digraph "qep.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="qep.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Public QEP/C interface."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="qep_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qep__port_8h.html",tooltip="QEP/C port, generic C11 compiler."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="qep_hsm.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qep__hsm_8c.html",tooltip="QHsm implementation"];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="qep_msm.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qep__msm_8c.html",tooltip="QMsm implementation"];
+  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qk_2qf__port_8h.html",tooltip="QF/C port example for QK, generic C compiler."];
+  Node2 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qv_2qf__port_8h.html",tooltip="QF/C port example for QV, generic C compiler."];
+  Node2 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="qf_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_2qf__port_8h.html",tooltip="QF/C port example for QXK, generic C compiler."];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="qs_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_2qs__port_8h.html",tooltip="QS/C port to a 32-bit CPU and a generic C compiler."];
+}

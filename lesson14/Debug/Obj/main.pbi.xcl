@@ -1,9 +1,9 @@
-"D:\Repositories\Projects\QuantumLeaps\lesson13\main.c"
+"D:\Repositories\Projects\QuantumLeaps\lesson14\main.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -I
-D:\Repositories\Projects\QuantumLeaps\lesson13
+D:\Repositories\Projects\QuantumLeaps\lesson14
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\CMSIS\Core\Include
 -I

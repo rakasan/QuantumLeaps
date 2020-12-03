@@ -1,0 +1,15 @@
+digraph "qxk_pkg.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="qxk_pkg.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Internal (package scope) QXK/C interface."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="qxk.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_8c.html",tooltip="QXK preemptive dual-mode kernel core functions."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="qxk_mutex.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk__mutex_8c.html",tooltip="QXMutex_init(), QXMutex_lock(), QXMutex_tryLock() and QXMutex_unlock() definitions."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="qxk_sema.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk__sema_8c.html",tooltip="QXK preemptive kernel semaphore functions."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="qxk_xthr.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk__xthr_8c.html",tooltip="QXK preemptive kernel extended (blocking) thread functions."];
+}

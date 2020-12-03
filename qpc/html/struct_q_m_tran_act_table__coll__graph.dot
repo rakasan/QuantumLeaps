@@ -1,0 +1,10 @@
+digraph "QMTranActTable"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{QMTranActTable\n|+ act\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Transition-Action Table for the Meta State Machine."];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +target" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node2 [label="{QMState\n|+ stateHandler\l+ entryAction\l+ exitAction\l+ initAction\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qep_8h.html#struct_q_m_state",tooltip="State object for the QMsm class (QM State Machine)."];
+  Node2 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +superstate" ,arrowhead="odiamond",fontname="Helvetica"];
+}

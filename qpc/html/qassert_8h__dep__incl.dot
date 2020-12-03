@@ -1,0 +1,47 @@
+digraph "qassert.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="qassert.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Customizable and memory-efficient assertions for embedded systems."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="qpc.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qpc_8h.html",tooltip="QP/C public interface including backwards-compatibility layer."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="qep_hsm.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qep__hsm_8c.html",tooltip="QHsm implementation"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="qep_msm.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qep__msm_8c.html",tooltip="QMsm implementation"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="qf_act.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__act_8c.html",tooltip="QActive services and QF support code"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="qf_actq.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__actq_8c.html",tooltip="QActive native queue operations (based on QEQueue)"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="qf_defer.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__defer_8c.html",tooltip="QActive_defer() and QActive_recall() implementation."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="qf_dyn.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__dyn_8c.html",tooltip="QF/C dynamic event management."];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="qf_mem.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__mem_8c.html",tooltip="QMPool implementatin (Memory Pool)"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="qf_ps.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__ps_8c.html",tooltip="Publish-Subscribe services."];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="qf_qeq.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__qeq_8c.html",tooltip="QEQueue implementation (QP native thread-safe queue)"];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="qf_time.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qf__time_8c.html",tooltip="QTimeEvt implementation and QF system clock tick QF_tickX_())"];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="qk.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qk_8c.html",tooltip="QK preemptive kernel implementation."];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="qs.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qs_8c.html",tooltip="QS software tracing services."];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="qs_rx.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qs__rx_8c.html",tooltip="QS/C receive channel services."];
+  Node1 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="qutest.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qutest_8c.html",tooltip="QF/C stub for QUTEST unit testing."];
+  Node1 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="qv.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qv_8c.html",tooltip="Cooperative QV kernel, definition of QP::QV_readySet_ and implementation of kernel-specific functions..."];
+  Node1 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="qxk.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk_8c.html",tooltip="QXK preemptive dual-mode kernel core functions."];
+  Node1 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="qxk_mutex.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk__mutex_8c.html",tooltip="QXMutex_init(), QXMutex_lock(), QXMutex_tryLock() and QXMutex_unlock() definitions."];
+  Node1 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="qxk_sema.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk__sema_8c.html",tooltip="QXK preemptive kernel semaphore functions."];
+  Node1 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="qxk_xthr.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qxk__xthr_8c.html",tooltip="QXK preemptive kernel extended (blocking) thread functions."];
+}

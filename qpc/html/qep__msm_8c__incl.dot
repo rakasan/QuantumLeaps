@@ -1,0 +1,21 @@
+digraph "qep_msm.c"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="qep_msm.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="QMsm implementation"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="qep_port.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qep__port_8h.html",tooltip="QEP/C port, generic C11 compiler."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="stdint.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="stdbool.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$stdbool_8h.html",tooltip="Boolean type and constansts. WG14/N843 C99 Standard, Section 7.16."];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="qep.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qep_8h.html",tooltip="Public QEP/C interface."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="qassert.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qassert_8h.html",tooltip="Customizable and memory-efficient assertions for embedded systems."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="qs_port.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="qs_pkg.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$qs__pkg_8h.html",tooltip="Internal (package scope) QS/C interface."];
+}

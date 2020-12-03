@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "D:\Repositories\Projects\QuantumLeaps\lesson13\settings\project.Debug.general.xcl" --backend -f "D:\Repositories\Projects\QuantumLeaps\lesson13\settings\project.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "D:\Repositories\Projects\QuantumLeaps\lesson14\settings\project.Debug.general.xcl" --backend -f "D:\Repositories\Projects\QuantumLeaps\lesson14\settings\project.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "D:\Repositories\Projects\QuantumLeaps\lesson13\settings\project.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Repositories\Projects\QuantumLeaps\lesson13\settings\project.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "D:\Repositories\Projects\QuantumLeaps\lesson14\settings\project.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Repositories\Projects\QuantumLeaps\lesson14\settings\project.Debug.driver.xcl" 
 }

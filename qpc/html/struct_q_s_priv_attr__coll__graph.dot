@@ -1,0 +1,7 @@
+digraph "QSPrivAttr"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{QSPrivAttr\n|+ glbFilter\l+ locFilter\l+ locFilter_AP\l+ buf\l+ end\l+ head\l+ tail\l+ used\l+ seq\l+ chksum\l+ critNest\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Private QS attributes to keep track of the filters and the trace buffer."];
+}
