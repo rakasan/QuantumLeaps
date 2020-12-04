@@ -1,9 +1,17 @@
 #include <stdint.h>
 #include "miros.h"
+#include "qassert.h"
+
+Q_DEFINE_THIS_FILE
 
 OSThread * volatile OS_curr; /* Pointer to the current thread */
 OSThread * volatile OS_next; /* Pointer to the next thread */ 
 
+#define MAX_THREAD 32;
+
+OSThread *OS_thread[32+1];
+uint8_t OS_ThreadNum;
+uint8_t OS_currIdx;
 void OSInit(void)
 {
 	/* Set the PendSV Interrupt priority to the lowest possible */
@@ -46,10 +54,37 @@ void *stkSto,uint32_t stkSize)
 	{
 		*sp = 0xDEADBEEF;
 	}
+	
+	Q_ASSERT(OS_ThreadNum < Q_DIM(OS_thread));
+	
+	OS_thread[OS_ThreadNum] = me;
+	
+	++OS_ThreadNum;
+	
+}
+
+void OS_run(void){
+	OS_onStartUp();
+	
+	/* Start the threads  */
+		 __disable_irq();
+		OS_sched();
+	  __enable_irq();
+	
+	/* This code should never be executed */
+	Q_ERROR();
 }
 
 void OS_sched(void)
 {
+	++OS_currIdx;
+	if(OS_currIdx == OS_ThreadNum)
+	{
+		OS_currIdx = 0U;
+	}
+	
+	OS_next = OS_thread[OS_currIdx];
+	
 		if(OS_next != OS_curr)
 		{	
 			*(uint32_t volatile *)0xE000ED04 = (1U <<28U);

@@ -1,0 +1,188 @@
+#include <stdint.h>
+#include "miros.h"
+#include "qassert.h"
+
+Q_DEFINE_THIS_FILE
+
+OSThread * volatile OS_curr; /* Pointer to the current thread */
+OSThread * volatile OS_next; /* Pointer to the next thread */ 
+
+#define MAX_THREAD 32;
+
+OSThread *OS_thread[32+1];
+uint8_t OS_ThreadNum;
+uint8_t OS_currIdx;
+uint32_t OS_readySet;
+
+OSThread IdleThread;
+void main_IdleThread() {
+    while (1) {
+			OS_onIdle();
+    }
+}
+
+void OSInit(void *stkSto,uint32_t stkSize)
+{
+	/* Set the PendSV Interrupt priority to the lowest possible */
+	*(uint32_t volatile *)0xE000ED20 |= (0xFF << 16);
+	
+	OSThread_start(&IdleThread,&main_IdleThread,
+								stkSto,stkSize);
+
+}
+
+void OSThread_start( 	OSThread *me,OSThreadHandler threadHandler,
+void *stkSto,uint32_t stkSize)
+{
+	/* Give me the value of the stored at the beginning of the stack (the stack grows thourds the lower address) */
+	uint32_t *sp = (uint32_t *)((((uint32_t)stkSto + stkSize)/8) * 8); //Last mathmetical operation needs for memory alignment eg: 52 is not memory allign but 52 / 8 = 6 *8 = 48(which is memory allignt)
+	uint32_t *stk_limit;
+	/* fabricate Cortex-M ISR stack frame for blinky1 */
+    *(--sp) = (1U << 24);  /* xPSR */
+    *(--sp) = (uint32_t)threadHandler; /* PC */
+    *(--sp) = 0x0000000EU; /* LR  */
+    *(--sp) = 0x0000000CU; /* R12 */
+    *(--sp) = 0x00000003U; /* R3  */
+    *(--sp) = 0x00000002U; /* R2  */
+    *(--sp) = 0x00000001U; /* R1  */
+    *(--sp) = 0x00000000U; /* R0  */
+    /* additionally, fake registers R4-R11 */
+    *(--sp) = 0x0000000BU; /* R11 */
+    *(--sp) = 0x0000000AU; /* R10 */
+    *(--sp) = 0x00000009U; /* R9 */
+    *(--sp) = 0x00000008U; /* R8 */
+    *(--sp) = 0x00000007U; /* R7 */
+    *(--sp) = 0x00000006U; /* R6 */
+    *(--sp) = 0x00000005U; /* R5 */
+    *(--sp) = 0x00000004U; /* R4 */
+	
+	/* Save the top of the stack in the threads atribute  */
+	me->sp = sp;
+	
+	/* */
+	stk_limit = (uint32_t *)(((((uint32_t)stkSto - 1)/8)+ 1) * 8);
+	
+	/* Fill the stack with DEADBEEF in order to see how big the stack usage is */
+	for(sp = sp-1U;sp>=stk_limit;--sp)
+	{
+		*sp = 0xDEADBEEF;
+	}
+	
+	Q_ASSERT(OS_ThreadNum < Q_DIM(OS_thread));
+	
+	OS_thread[OS_ThreadNum] = me;
+	
+	/*Ignore the idle thread */
+	if(OS_ThreadNum > 1)
+	{
+		OS_readySet |= (1U<<(OS_ThreadNum -1U));
+	}
+	
+	++OS_ThreadNum;
+	
+}
+
+void OS_run(void){
+	OS_onStartUp();
+	
+	/* Start the threads  */
+		 __disable_irq();
+		OS_sched();
+	  __enable_irq();
+	
+	/* This code should never be executed */
+	Q_ERROR();
+}
+
+void OS_sched(void)
+{
+	/* Verify if no thread is ready to do something */
+	if(OS_readySet == 0)
+	{
+		OS_currIdx = 0;/* Index of idle thread */
+	}
+	else
+	{
+		do{
+			++OS_currIdx;
+		if(OS_currIdx == OS_ThreadNum)
+		{
+			OS_currIdx = 1U; /* Do not enter the Idle thread if somebody else has something to do */
+		}
+	}while(OS_readySet & (1<<(OS_currIdx - 1)) == 0U);
+		OS_next = OS_thread[OS_currIdx];
+		
+			if(OS_next != OS_curr)
+			{	
+				*(uint32_t volatile *)0xE000ED04 = (1U <<28U);
+			}
+	}
+}
+
+void OS_tick(void)
+{
+	uint8_t n;
+	
+	for(n = 1;n< OS_ThreadNum;++n)
+	{
+		if(OS_thread[n]->timeout != 0)
+		{
+			--OS_thread[n]->timeout;
+			if(OS_thread[n] == 0)
+			{
+				/* Enable the OS Ready set */
+				OS_readySet |= (1U<<(n-1U));
+			}
+		}
+	}
+}
+
+void OS_delay(uint32_t ticks) {
+   	/* Start the threads  */
+		 __disable_irq();
+	
+		Q_REQUIRE(OS_curr !=OS_thread[0]); /*Protection agains calling the delay on the IDLE thread */
+		OS_curr->timeout = ticks;
+	
+		OS_readySet &= ~(1<<(OS_currIdx - 1)); 
+	
+		OS_sched(); /* Call the scheduler, because this thread has been blocked */
+	  __enable_irq();
+}
+
+__asm
+void PendSV_Handler(void) {
+    IMPORT  OS_curr  /* extern variable */
+    IMPORT  OS_next  /* extern variable */
+
+    /* Disable IRQ */
+    CPSID         I
+        /*   if(OS_curr != (OSThread *)0) { */  /* Save the SP register into the private sp data member */   
+    LDR           r1,=OS_curr /*@0x000005E8*/
+    LDR           r1,[r1,#0x00]
+    CBZ           r1,PendSV_restore
+    /* Push the registers R4-R11 on the stack */ 
+    PUSH					{r4-r11}
+
+    LDR           r1,=OS_curr
+    LDR           r1,[r1,#0x00]
+    /*OS_curr->sp = sp;  */  
+    STR           sp,[r1,#0x00]
+
+PendSV_restore
+    /*        sp = OS_next->sp; */  /*Save the stack context of the current thread */ 
+    LDR           r1,=OS_next 
+    LDR           r1,[r1,#0x00]
+    LDR           sp,[r1,#0x00]
+        /*   OS_curr = OS_next; */    
+    LDR           r1,=OS_next 
+    LDR           r1,[r1,#0x00]
+    LDR           r2,=OS_curr
+    STR           r1,[r2,#0x00]
+    /* pop registers r4-r11 */ 
+    POP						{r4-r11}
+    /*          __enable_irq(); */
+    CPSIE         I
+    BX            lr
+}
+

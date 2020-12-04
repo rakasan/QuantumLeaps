@@ -26,12 +26,6 @@ void BSP_init(void) {
     SYSCTL->GPIOHBCTL |= (1U << 5); /* enable AHB for GPIOF */
     GPIOF_AHB->DIR |= (LED_RED | LED_BLUE | LED_GREEN);
     GPIOF_AHB->DEN |= (LED_RED | LED_BLUE | LED_GREEN);
-
-    SystemCoreClockUpdate();
-    SysTick_Config(SystemCoreClock / BSP_TICKS_PER_SEC);
-	NVIC_SetPriority(SysTick_IRQn,0U);
-	
-    __enable_irq();
 }
 
 uint32_t BSP_tickCtr(void) {
@@ -74,6 +68,14 @@ void BSP_ledGreenOff(void) {
     GPIOF_AHB->DATA_Bits[LED_GREEN] = 0U;
 }
 
+
+void OS_onStartUp(void)
+{
+	 SystemCoreClockUpdate();
+   SysTick_Config(SystemCoreClock / BSP_TICKS_PER_SEC);
+	NVIC_SetPriority(SysTick_IRQn,0U);
+ 
+}
 
 void Q_onAssert(char const *module, int loc) {
     /* TBD: damage control */

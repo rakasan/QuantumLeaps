@@ -19,6 +19,10 @@ void *stkSto,uint32_t stkSize); /*stkSto - stack storage, stkSize - stack size *
 
 void OSInit(void);
 
+void OS_run(void);
+
+void OS_onStartUp(void);
+
 /* Scheduler for the threads */
 /* This function must be called from a critical area */
 void OS_sched(void);

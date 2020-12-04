@@ -5,25 +5,30 @@ Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
 Section Cross References
 
     bsp.o(i.BSP_delay) refers to bsp.o(i.BSP_tickCtr) for BSP_tickCtr
-    bsp.o(i.BSP_init) refers to system_tm4c123gh6pm.o(i.SystemCoreClockUpdate) for SystemCoreClockUpdate
-    bsp.o(i.BSP_init) refers to bsp.o(i.__NVIC_SetPriority) for __NVIC_SetPriority
-    bsp.o(i.BSP_init) refers to system_tm4c123gh6pm.o(.data) for SystemCoreClock
     bsp.o(i.BSP_tickCtr) refers to bsp.o(.data) for l_tickCtr
+    bsp.o(i.OS_onStartUp) refers to system_tm4c123gh6pm.o(i.SystemCoreClockUpdate) for SystemCoreClockUpdate
+    bsp.o(i.OS_onStartUp) refers to bsp.o(i.__NVIC_SetPriority) for __NVIC_SetPriority
+    bsp.o(i.OS_onStartUp) refers to system_tm4c123gh6pm.o(.data) for SystemCoreClock
     bsp.o(i.SysTick_Handler) refers to miros.o(i.OS_sched) for OS_sched
     bsp.o(i.SysTick_Handler) refers to bsp.o(.data) for l_tickCtr
     main.o(i.main) refers to bsp.o(i.BSP_init) for BSP_init
     main.o(i.main) refers to miros.o(i.OSInit) for OSInit
     main.o(i.main) refers to miros.o(i.OSThread_start) for OSThread_start
+    main.o(i.main) refers to miros.o(i.OS_run) for OS_run
     main.o(i.main) refers to main.o(.bss) for stack_blinky1
     main.o(i.main) refers to main.o(i.main_blinky1) for main_blinky1
     main.o(i.main) refers to main.o(.data) for blinky1
     main.o(i.main) refers to main.o(i.main_blinky2) for main_blinky2
+    main.o(i.main) refers to main.o(i.main_blinky3) for main_blinky3
     main.o(i.main_blinky1) refers to bsp.o(i.BSP_ledGreenOn) for BSP_ledGreenOn
     main.o(i.main_blinky1) refers to bsp.o(i.BSP_delay) for BSP_delay
     main.o(i.main_blinky1) refers to bsp.o(i.BSP_ledGreenOff) for BSP_ledGreenOff
     main.o(i.main_blinky2) refers to bsp.o(i.BSP_ledBlueOn) for BSP_ledBlueOn
     main.o(i.main_blinky2) refers to bsp.o(i.BSP_delay) for BSP_delay
     main.o(i.main_blinky2) refers to bsp.o(i.BSP_ledBlueOff) for BSP_ledBlueOff
+    main.o(i.main_blinky3) refers to bsp.o(i.BSP_ledRedOn) for BSP_ledRedOn
+    main.o(i.main_blinky3) refers to bsp.o(i.BSP_delay) for BSP_delay
+    main.o(i.main_blinky3) refers to bsp.o(i.BSP_ledRedOff) for BSP_ledRedOff
     system_tm4c123gh6pm.o(i.SystemCoreClockUpdate) refers to system_tm4c123gh6pm.o(i.getOscClk) for getOscClk
     system_tm4c123gh6pm.o(i.SystemCoreClockUpdate) refers to system_tm4c123gh6pm.o(.data) for SystemCoreClock
     startup_tm4c123gh6pm.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
@@ -40,7 +45,16 @@ Section Cross References
     startup_tm4c123gh6pm.o(.text) refers to startup_tm4c123gh6pm.o(HEAP) for __heap_base
     startup_tm4c123gh6pm.o(.text) refers to startup_tm4c123gh6pm.o(STACK) for __stack_limit
     miros.o(.emb_text) refers to miros.o(.data) for OS_curr
-    miros.o(i.OS_sched) refers to miros.o(.data) for OS_next
+    miros.o(i.OSThread_start) refers to bsp.o(i.Q_onAssert) for Q_onAssert
+    miros.o(i.OSThread_start) refers to miros.o(.data) for OS_ThreadNum
+    miros.o(i.OSThread_start) refers to miros.o(.constdata) for Q_this_module_
+    miros.o(i.OSThread_start) refers to miros.o(.bss) for OS_thread
+    miros.o(i.OS_run) refers to bsp.o(i.OS_onStartUp) for OS_onStartUp
+    miros.o(i.OS_run) refers to miros.o(i.OS_sched) for OS_sched
+    miros.o(i.OS_run) refers to bsp.o(i.Q_onAssert) for Q_onAssert
+    miros.o(i.OS_run) refers to miros.o(.constdata) for Q_this_module_
+    miros.o(i.OS_sched) refers to miros.o(.data) for OS_currIdx
+    miros.o(i.OS_sched) refers to miros.o(.bss) for OS_thread
     __main.o(!!!main) refers to __rtentry.o(.ARM.Collect$$rtentry$$00000000) for __rt_entry
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for __rt_entry_li
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) for __rt_entry_main
@@ -149,13 +163,11 @@ Removing Unused input sections from the image.
     Removing bsp.o(.rev16_text), (4 bytes).
     Removing bsp.o(.revsh_text), (4 bytes).
     Removing bsp.o(.rrx_text), (6 bytes).
-    Removing bsp.o(i.BSP_ledRedOff), (12 bytes).
-    Removing bsp.o(i.BSP_ledRedOn), (12 bytes).
     Removing system_tm4c123gh6pm.o(.rev16_text), (4 bytes).
     Removing system_tm4c123gh6pm.o(.revsh_text), (4 bytes).
     Removing system_tm4c123gh6pm.o(.rrx_text), (6 bytes).
 
-8 unused section(s) (total 52 bytes) removed from the image.
+6 unused section(s) (total 28 bytes) removed from the image.
 
 ==============================================================================
 
@@ -166,30 +178,30 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      620  startup_tm4c123gh6pm.o(RESET)
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
@@ -197,20 +209,20 @@ Image Symbol Table
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
@@ -280,39 +292,47 @@ Image Symbol Table
     .text                                    0x00000432   Section        0  indicate_semi.o(.text)
     i.BSP_delay                              0x00000432   Section        0  bsp.o(i.BSP_delay)
     i.BSP_init                               0x0000044c   Section        0  bsp.o(i.BSP_init)
-    i.BSP_ledBlueOff                         0x000004d8   Section        0  bsp.o(i.BSP_ledBlueOff)
-    i.BSP_ledBlueOn                          0x000004e4   Section        0  bsp.o(i.BSP_ledBlueOn)
-    i.BSP_ledGreenOff                        0x000004f0   Section        0  bsp.o(i.BSP_ledGreenOff)
-    i.BSP_ledGreenOn                         0x000004fc   Section        0  bsp.o(i.BSP_ledGreenOn)
-    i.BSP_tickCtr                            0x00000508   Section        0  bsp.o(i.BSP_tickCtr)
-    i.OSInit                                 0x00000518   Section        0  miros.o(i.OSInit)
-    i.OSThread_start                         0x0000052c   Section        0  miros.o(i.OSThread_start)
-    i.OS_sched                               0x000005d8   Section        0  miros.o(i.OS_sched)
-    i.Q_onAssert                             0x000005fc   Section        0  bsp.o(i.Q_onAssert)
-    i.SysTick_Handler                        0x00000628   Section        0  bsp.o(i.SysTick_Handler)
-    i.SystemCoreClockUpdate                  0x00000644   Section        0  system_tm4c123gh6pm.o(i.SystemCoreClockUpdate)
-    i.SystemInit                             0x00000708   Section        0  system_tm4c123gh6pm.o(i.SystemInit)
-    i.__NVIC_SetPriority                     0x000007ac   Section        0  bsp.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x000007ad   Thumb Code    32  bsp.o(i.__NVIC_SetPriority)
-    i.getOscClk                              0x000007d4   Section        0  system_tm4c123gh6pm.o(i.getOscClk)
-    getOscClk                                0x000007d5   Thumb Code   182  system_tm4c123gh6pm.o(i.getOscClk)
-    i.main                                   0x000008cc   Section        0  main.o(i.main)
-    i.main_blinky1                           0x00000908   Section        0  main.o(i.main_blinky1)
-    i.main_blinky2                           0x00000920   Section        0  main.o(i.main_blinky2)
+    i.BSP_ledBlueOff                         0x00000490   Section        0  bsp.o(i.BSP_ledBlueOff)
+    i.BSP_ledBlueOn                          0x0000049c   Section        0  bsp.o(i.BSP_ledBlueOn)
+    i.BSP_ledGreenOff                        0x000004a8   Section        0  bsp.o(i.BSP_ledGreenOff)
+    i.BSP_ledGreenOn                         0x000004b4   Section        0  bsp.o(i.BSP_ledGreenOn)
+    i.BSP_ledRedOff                          0x000004c0   Section        0  bsp.o(i.BSP_ledRedOff)
+    i.BSP_ledRedOn                           0x000004cc   Section        0  bsp.o(i.BSP_ledRedOn)
+    i.BSP_tickCtr                            0x000004d8   Section        0  bsp.o(i.BSP_tickCtr)
+    i.OSInit                                 0x000004e8   Section        0  miros.o(i.OSInit)
+    i.OSThread_start                         0x000004fc   Section        0  miros.o(i.OSThread_start)
+    i.OS_onStartUp                           0x000005e8   Section        0  bsp.o(i.OS_onStartUp)
+    i.OS_run                                 0x00000634   Section        0  miros.o(i.OS_run)
+    i.OS_sched                               0x00000650   Section        0  miros.o(i.OS_sched)
+    i.Q_onAssert                             0x000006a8   Section        0  bsp.o(i.Q_onAssert)
+    i.SysTick_Handler                        0x000006d4   Section        0  bsp.o(i.SysTick_Handler)
+    i.SystemCoreClockUpdate                  0x000006f0   Section        0  system_tm4c123gh6pm.o(i.SystemCoreClockUpdate)
+    i.SystemInit                             0x000007b4   Section        0  system_tm4c123gh6pm.o(i.SystemInit)
+    i.__NVIC_SetPriority                     0x00000858   Section        0  bsp.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x00000859   Thumb Code    32  bsp.o(i.__NVIC_SetPriority)
+    i.getOscClk                              0x00000880   Section        0  system_tm4c123gh6pm.o(i.getOscClk)
+    getOscClk                                0x00000881   Thumb Code   182  system_tm4c123gh6pm.o(i.getOscClk)
+    i.main                                   0x00000978   Section        0  main.o(i.main)
+    i.main_blinky1                           0x000009d4   Section        0  main.o(i.main_blinky1)
+    i.main_blinky2                           0x000009ec   Section        0  main.o(i.main_blinky2)
+    i.main_blinky3                           0x00000a04   Section        0  main.o(i.main_blinky3)
+    .constdata                               0x00000a1c   Section        8  miros.o(.constdata)
+    Q_this_module_                           0x00000a1c   Data           8  miros.o(.constdata)
     .data                                    0x20000000   Section        4  bsp.o(.data)
     l_tickCtr                                0x20000000   Data           4  bsp.o(.data)
-    .data                                    0x20000004   Section        8  main.o(.data)
-    .data                                    0x2000000c   Section        4  system_tm4c123gh6pm.o(.data)
-    .data                                    0x20000010   Section        8  miros.o(.data)
-    .bss                                     0x20000018   Section      320  main.o(.bss)
-    .bss                                     0x20000158   Section       96  libspace.o(.bss)
-    HEAP                                     0x200001b8   Section       16  startup_tm4c123gh6pm.o(HEAP)
-    __heap_base                              0x200001b8   Data           0  startup_tm4c123gh6pm.o(HEAP)
-    STACK                                    0x200001c8   Section     1024  startup_tm4c123gh6pm.o(STACK)
-    __heap_limit                             0x200001c8   Data           0  startup_tm4c123gh6pm.o(HEAP)
-    __stack_base                             0x200001c8   Data           0  startup_tm4c123gh6pm.o(STACK)
-    __initial_sp                             0x200005c8   Data           0  startup_tm4c123gh6pm.o(STACK)
-    __stack_limit                            0x200005c8   Data           0  startup_tm4c123gh6pm.o(STACK)
+    .data                                    0x20000004   Section       12  main.o(.data)
+    .data                                    0x20000010   Section        4  system_tm4c123gh6pm.o(.data)
+    .data                                    0x20000014   Section       10  miros.o(.data)
+    .bss                                     0x20000020   Section      480  main.o(.bss)
+    .bss                                     0x20000200   Section      132  miros.o(.bss)
+    .bss                                     0x20000284   Section       96  libspace.o(.bss)
+    HEAP                                     0x200002e8   Section       16  startup_tm4c123gh6pm.o(HEAP)
+    __heap_base                              0x200002e8   Data           0  startup_tm4c123gh6pm.o(HEAP)
+    STACK                                    0x200002f8   Section     1024  startup_tm4c123gh6pm.o(STACK)
+    __heap_limit                             0x200002f8   Data           0  startup_tm4c123gh6pm.o(HEAP)
+    __stack_base                             0x200002f8   Data           0  startup_tm4c123gh6pm.o(STACK)
+    __initial_sp                             0x200006f8   Data           0  startup_tm4c123gh6pm.o(STACK)
+    __stack_limit                            0x200006f8   Data           0  startup_tm4c123gh6pm.o(STACK)
 
     Global Symbols
 
@@ -533,33 +553,43 @@ Image Symbol Table
     __use_no_semihosting_swi                 0x00000431   Thumb Code     2  use_no_semi.o(.text)
     BSP_delay                                0x00000433   Thumb Code    24  bsp.o(i.BSP_delay)
     __semihosting_library_function           0x00000433   Thumb Code     0  indicate_semi.o(.text)
-    BSP_init                                 0x0000044d   Thumb Code   118  bsp.o(i.BSP_init)
-    BSP_ledBlueOff                           0x000004d9   Thumb Code     8  bsp.o(i.BSP_ledBlueOff)
-    BSP_ledBlueOn                            0x000004e5   Thumb Code     8  bsp.o(i.BSP_ledBlueOn)
-    BSP_ledGreenOff                          0x000004f1   Thumb Code     8  bsp.o(i.BSP_ledGreenOff)
-    BSP_ledGreenOn                           0x000004fd   Thumb Code     8  bsp.o(i.BSP_ledGreenOn)
-    BSP_tickCtr                              0x00000509   Thumb Code    10  bsp.o(i.BSP_tickCtr)
-    OSInit                                   0x00000519   Thumb Code    14  miros.o(i.OSInit)
-    OSThread_start                           0x0000052d   Thumb Code   166  miros.o(i.OSThread_start)
-    OS_sched                                 0x000005d9   Thumb Code    22  miros.o(i.OS_sched)
-    Q_onAssert                               0x000005fd   Thumb Code    36  bsp.o(i.Q_onAssert)
-    SysTick_Handler                          0x00000629   Thumb Code    22  bsp.o(i.SysTick_Handler)
-    SystemCoreClockUpdate                    0x00000645   Thumb Code   184  system_tm4c123gh6pm.o(i.SystemCoreClockUpdate)
-    SystemInit                               0x00000709   Thumb Code   126  system_tm4c123gh6pm.o(i.SystemInit)
-    main                                     0x000008cd   Thumb Code    36  main.o(i.main)
-    main_blinky1                             0x00000909   Thumb Code    24  main.o(i.main_blinky1)
-    main_blinky2                             0x00000921   Thumb Code    24  main.o(i.main_blinky2)
-    Region$$Table$$Base                      0x00000938   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000958   Number         0  anon$$obj.o(Region$$Table)
+    BSP_init                                 0x0000044d   Thumb Code    50  bsp.o(i.BSP_init)
+    BSP_ledBlueOff                           0x00000491   Thumb Code     8  bsp.o(i.BSP_ledBlueOff)
+    BSP_ledBlueOn                            0x0000049d   Thumb Code     8  bsp.o(i.BSP_ledBlueOn)
+    BSP_ledGreenOff                          0x000004a9   Thumb Code     8  bsp.o(i.BSP_ledGreenOff)
+    BSP_ledGreenOn                           0x000004b5   Thumb Code     8  bsp.o(i.BSP_ledGreenOn)
+    BSP_ledRedOff                            0x000004c1   Thumb Code     8  bsp.o(i.BSP_ledRedOff)
+    BSP_ledRedOn                             0x000004cd   Thumb Code     8  bsp.o(i.BSP_ledRedOn)
+    BSP_tickCtr                              0x000004d9   Thumb Code    10  bsp.o(i.BSP_tickCtr)
+    OSInit                                   0x000004e9   Thumb Code    14  miros.o(i.OSInit)
+    OSThread_start                           0x000004fd   Thumb Code   218  miros.o(i.OSThread_start)
+    OS_onStartUp                             0x000005e9   Thumb Code    70  bsp.o(i.OS_onStartUp)
+    OS_run                                   0x00000635   Thumb Code    24  miros.o(i.OS_run)
+    OS_sched                                 0x00000651   Thumb Code    64  miros.o(i.OS_sched)
+    Q_onAssert                               0x000006a9   Thumb Code    36  bsp.o(i.Q_onAssert)
+    SysTick_Handler                          0x000006d5   Thumb Code    22  bsp.o(i.SysTick_Handler)
+    SystemCoreClockUpdate                    0x000006f1   Thumb Code   184  system_tm4c123gh6pm.o(i.SystemCoreClockUpdate)
+    SystemInit                               0x000007b5   Thumb Code   126  system_tm4c123gh6pm.o(i.SystemInit)
+    main                                     0x00000979   Thumb Code    54  main.o(i.main)
+    main_blinky1                             0x000009d5   Thumb Code    24  main.o(i.main_blinky1)
+    main_blinky2                             0x000009ed   Thumb Code    24  main.o(i.main_blinky2)
+    main_blinky3                             0x00000a05   Thumb Code    24  main.o(i.main_blinky3)
+    Region$$Table$$Base                      0x00000a24   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00000a44   Number         0  anon$$obj.o(Region$$Table)
     blinky1                                  0x20000004   Data           4  main.o(.data)
     blinky2                                  0x20000008   Data           4  main.o(.data)
-    SystemCoreClock                          0x2000000c   Data           4  system_tm4c123gh6pm.o(.data)
-    OS_curr                                  0x20000010   Data           4  miros.o(.data)
-    OS_next                                  0x20000014   Data           4  miros.o(.data)
-    stack_blinky1                            0x20000018   Data         160  main.o(.bss)
-    stack_blinky2                            0x200000b8   Data         160  main.o(.bss)
-    __libspace_start                         0x20000158   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x200001b8   Data           0  libspace.o(.bss)
+    blinky3                                  0x2000000c   Data           4  main.o(.data)
+    SystemCoreClock                          0x20000010   Data           4  system_tm4c123gh6pm.o(.data)
+    OS_curr                                  0x20000014   Data           4  miros.o(.data)
+    OS_next                                  0x20000018   Data           4  miros.o(.data)
+    OS_ThreadNum                             0x2000001c   Data           1  miros.o(.data)
+    OS_currIdx                               0x2000001d   Data           1  miros.o(.data)
+    stack_blinky1                            0x20000020   Data         160  main.o(.bss)
+    stack_blinky2                            0x200000c0   Data         160  main.o(.bss)
+    stack_blinky3                            0x20000160   Data         160  main.o(.bss)
+    OS_thread                                0x20000200   Data         132  miros.o(.bss)
+    __libspace_start                         0x20000284   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x200002e4   Data           0  libspace.o(.bss)
 
 
 
@@ -569,106 +599,115 @@ Memory Map of the image
 
   Image Entry point : 0x0000033d
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000970, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000a64, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000958, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000a44, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x0000026c   Data   RO          202    RESET               startup_tm4c123gh6pm.o
-    0x0000026c   0x0000026c   0x00000008   Code   RO          242  * !!!main             c_w.l(__main.o)
-    0x00000274   0x00000274   0x00000034   Code   RO          401    !!!scatter          c_w.l(__scatter.o)
-    0x000002a8   0x000002a8   0x0000001a   Code   RO          403    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000000   0x00000000   0x0000026c   Data   RO          214    RESET               startup_tm4c123gh6pm.o
+    0x0000026c   0x0000026c   0x00000008   Code   RO          265  * !!!main             c_w.l(__main.o)
+    0x00000274   0x00000274   0x00000034   Code   RO          424    !!!scatter          c_w.l(__scatter.o)
+    0x000002a8   0x000002a8   0x0000001a   Code   RO          426    !!handler_copy      c_w.l(__scatter_copy.o)
     0x000002c2   0x000002c2   0x00000002   PAD
-    0x000002c4   0x000002c4   0x0000001c   Code   RO          405    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x000002e0   0x000002e0   0x00000002   Code   RO          269    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          276    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          278    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          281    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          283    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          285    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          288    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          290    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          292    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          294    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          296    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          298    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          300    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          302    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          304    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          306    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          308    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          312    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          314    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          316    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000000   Code   RO          318    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x000002e2   0x000002e2   0x00000002   Code   RO          319    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x000002e4   0x000002e4   0x00000002   Code   RO          339    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x000002e6   0x000002e6   0x00000000   Code   RO          352    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x000002e6   0x000002e6   0x00000000   Code   RO          354    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x000002e6   0x000002e6   0x00000000   Code   RO          356    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
-    0x000002e6   0x000002e6   0x00000000   Code   RO          359    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
-    0x000002e6   0x000002e6   0x00000000   Code   RO          362    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x000002e6   0x000002e6   0x00000000   Code   RO          364    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
-    0x000002e6   0x000002e6   0x00000000   Code   RO          367    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
-    0x000002e6   0x000002e6   0x00000002   Code   RO          368    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
-    0x000002e8   0x000002e8   0x00000000   Code   RO          244    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x000002e8   0x000002e8   0x00000000   Code   RO          246    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x000002e8   0x000002e8   0x00000006   Code   RO          258    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x000002ee   0x000002ee   0x00000000   Code   RO          248    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x000002ee   0x000002ee   0x00000004   Code   RO          249    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x000002f2   0x000002f2   0x00000000   Code   RO          251    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x000002f2   0x000002f2   0x00000008   Code   RO          252    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x000002fa   0x000002fa   0x00000002   Code   RO          273    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x000002fc   0x000002fc   0x00000000   Code   RO          321    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x000002fc   0x000002fc   0x00000004   Code   RO          322    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000300   0x00000300   0x00000006   Code   RO          323    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x000002c4   0x000002c4   0x0000001c   Code   RO          428    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x000002e0   0x000002e0   0x00000002   Code   RO          292    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          299    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          301    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          304    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          306    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          308    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          311    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          313    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          315    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          317    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          319    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          321    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          323    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          325    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          327    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          329    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          331    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          335    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          337    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          339    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000000   Code   RO          341    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x000002e2   0x000002e2   0x00000002   Code   RO          342    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x000002e4   0x000002e4   0x00000002   Code   RO          362    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x000002e6   0x000002e6   0x00000000   Code   RO          375    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x000002e6   0x000002e6   0x00000000   Code   RO          377    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x000002e6   0x000002e6   0x00000000   Code   RO          379    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
+    0x000002e6   0x000002e6   0x00000000   Code   RO          382    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
+    0x000002e6   0x000002e6   0x00000000   Code   RO          385    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x000002e6   0x000002e6   0x00000000   Code   RO          387    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
+    0x000002e6   0x000002e6   0x00000000   Code   RO          390    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
+    0x000002e6   0x000002e6   0x00000002   Code   RO          391    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
+    0x000002e8   0x000002e8   0x00000000   Code   RO          267    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x000002e8   0x000002e8   0x00000000   Code   RO          269    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x000002e8   0x000002e8   0x00000006   Code   RO          281    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x000002ee   0x000002ee   0x00000000   Code   RO          271    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x000002ee   0x000002ee   0x00000004   Code   RO          272    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x000002f2   0x000002f2   0x00000000   Code   RO          274    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x000002f2   0x000002f2   0x00000008   Code   RO          275    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x000002fa   0x000002fa   0x00000002   Code   RO          296    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x000002fc   0x000002fc   0x00000000   Code   RO          344    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x000002fc   0x000002fc   0x00000004   Code   RO          345    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000300   0x00000300   0x00000006   Code   RO          346    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x00000306   0x00000306   0x00000002   PAD
-    0x00000308   0x00000308   0x00000034   Code   RO          207    .emb_text           miros.o
-    0x0000033c   0x0000033c   0x0000007c   Code   RO          203  * .text               startup_tm4c123gh6pm.o
-    0x000003b8   0x000003b8   0x00000006   Code   RO          240    .text               c_w.l(heapauxi.o)
-    0x000003be   0x000003be   0x0000004a   Code   RO          260    .text               c_w.l(sys_stackheap_outer.o)
-    0x00000408   0x00000408   0x00000012   Code   RO          262    .text               c_w.l(exit.o)
+    0x00000308   0x00000308   0x00000034   Code   RO          219    .emb_text           miros.o
+    0x0000033c   0x0000033c   0x0000007c   Code   RO          215  * .text               startup_tm4c123gh6pm.o
+    0x000003b8   0x000003b8   0x00000006   Code   RO          263    .text               c_w.l(heapauxi.o)
+    0x000003be   0x000003be   0x0000004a   Code   RO          283    .text               c_w.l(sys_stackheap_outer.o)
+    0x00000408   0x00000408   0x00000012   Code   RO          285    .text               c_w.l(exit.o)
     0x0000041a   0x0000041a   0x00000002   PAD
-    0x0000041c   0x0000041c   0x00000008   Code   RO          270    .text               c_w.l(libspace.o)
-    0x00000424   0x00000424   0x0000000c   Code   RO          331    .text               c_w.l(sys_exit.o)
-    0x00000430   0x00000430   0x00000002   Code   RO          342    .text               c_w.l(use_no_semi.o)
-    0x00000432   0x00000432   0x00000000   Code   RO          344    .text               c_w.l(indicate_semi.o)
+    0x0000041c   0x0000041c   0x00000008   Code   RO          293    .text               c_w.l(libspace.o)
+    0x00000424   0x00000424   0x0000000c   Code   RO          354    .text               c_w.l(sys_exit.o)
+    0x00000430   0x00000430   0x00000002   Code   RO          365    .text               c_w.l(use_no_semi.o)
+    0x00000432   0x00000432   0x00000000   Code   RO          367    .text               c_w.l(indicate_semi.o)
     0x00000432   0x00000432   0x00000018   Code   RO            4    i.BSP_delay         bsp.o
     0x0000044a   0x0000044a   0x00000002   PAD
-    0x0000044c   0x0000044c   0x0000008c   Code   RO            5    i.BSP_init          bsp.o
-    0x000004d8   0x000004d8   0x0000000c   Code   RO            6    i.BSP_ledBlueOff    bsp.o
-    0x000004e4   0x000004e4   0x0000000c   Code   RO            7    i.BSP_ledBlueOn     bsp.o
-    0x000004f0   0x000004f0   0x0000000c   Code   RO            8    i.BSP_ledGreenOff   bsp.o
-    0x000004fc   0x000004fc   0x0000000c   Code   RO            9    i.BSP_ledGreenOn    bsp.o
-    0x00000508   0x00000508   0x00000010   Code   RO           12    i.BSP_tickCtr       bsp.o
-    0x00000518   0x00000518   0x00000014   Code   RO          208    i.OSInit            miros.o
-    0x0000052c   0x0000052c   0x000000ac   Code   RO          209    i.OSThread_start    miros.o
-    0x000005d8   0x000005d8   0x00000024   Code   RO          210    i.OS_sched          miros.o
-    0x000005fc   0x000005fc   0x0000002c   Code   RO           13    i.Q_onAssert        bsp.o
-    0x00000628   0x00000628   0x0000001c   Code   RO           14    i.SysTick_Handler   bsp.o
-    0x00000644   0x00000644   0x000000c4   Code   RO          158    i.SystemCoreClockUpdate  system_tm4c123gh6pm.o
-    0x00000708   0x00000708   0x000000a4   Code   RO          159    i.SystemInit        system_tm4c123gh6pm.o
-    0x000007ac   0x000007ac   0x00000028   Code   RO           15    i.__NVIC_SetPriority  bsp.o
-    0x000007d4   0x000007d4   0x000000f8   Code   RO          160    i.getOscClk         system_tm4c123gh6pm.o
-    0x000008cc   0x000008cc   0x0000003c   Code   RO          127    i.main              main.o
-    0x00000908   0x00000908   0x00000018   Code   RO          128    i.main_blinky1      main.o
-    0x00000920   0x00000920   0x00000018   Code   RO          129    i.main_blinky2      main.o
-    0x00000938   0x00000938   0x00000020   Data   RO          399    Region$$Table       anon$$obj.o
+    0x0000044c   0x0000044c   0x00000044   Code   RO            5    i.BSP_init          bsp.o
+    0x00000490   0x00000490   0x0000000c   Code   RO            6    i.BSP_ledBlueOff    bsp.o
+    0x0000049c   0x0000049c   0x0000000c   Code   RO            7    i.BSP_ledBlueOn     bsp.o
+    0x000004a8   0x000004a8   0x0000000c   Code   RO            8    i.BSP_ledGreenOff   bsp.o
+    0x000004b4   0x000004b4   0x0000000c   Code   RO            9    i.BSP_ledGreenOn    bsp.o
+    0x000004c0   0x000004c0   0x0000000c   Code   RO           10    i.BSP_ledRedOff     bsp.o
+    0x000004cc   0x000004cc   0x0000000c   Code   RO           11    i.BSP_ledRedOn      bsp.o
+    0x000004d8   0x000004d8   0x00000010   Code   RO           12    i.BSP_tickCtr       bsp.o
+    0x000004e8   0x000004e8   0x00000014   Code   RO          220    i.OSInit            miros.o
+    0x000004fc   0x000004fc   0x000000ec   Code   RO          221    i.OSThread_start    miros.o
+    0x000005e8   0x000005e8   0x0000004c   Code   RO           13    i.OS_onStartUp      bsp.o
+    0x00000634   0x00000634   0x0000001c   Code   RO          222    i.OS_run            miros.o
+    0x00000650   0x00000650   0x00000058   Code   RO          223    i.OS_sched          miros.o
+    0x000006a8   0x000006a8   0x0000002c   Code   RO           14    i.Q_onAssert        bsp.o
+    0x000006d4   0x000006d4   0x0000001c   Code   RO           15    i.SysTick_Handler   bsp.o
+    0x000006f0   0x000006f0   0x000000c4   Code   RO          170    i.SystemCoreClockUpdate  system_tm4c123gh6pm.o
+    0x000007b4   0x000007b4   0x000000a4   Code   RO          171    i.SystemInit        system_tm4c123gh6pm.o
+    0x00000858   0x00000858   0x00000028   Code   RO           16    i.__NVIC_SetPriority  bsp.o
+    0x00000880   0x00000880   0x000000f8   Code   RO          172    i.getOscClk         system_tm4c123gh6pm.o
+    0x00000978   0x00000978   0x0000005c   Code   RO          133    i.main              main.o
+    0x000009d4   0x000009d4   0x00000018   Code   RO          134    i.main_blinky1      main.o
+    0x000009ec   0x000009ec   0x00000018   Code   RO          135    i.main_blinky2      main.o
+    0x00000a04   0x00000a04   0x00000018   Code   RO          136    i.main_blinky3      main.o
+    0x00000a1c   0x00000a1c   0x00000008   Data   RO          225    .constdata          miros.o
+    0x00000a24   0x00000a24   0x00000020   Data   RO          422    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00000958, Size: 0x000005c8, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00000a44, Size: 0x000006f8, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000958   0x00000004   Data   RW           16    .data               bsp.o
-    0x20000004   0x0000095c   0x00000008   Data   RW          131    .data               main.o
-    0x2000000c   0x00000964   0x00000004   Data   RW          161    .data               system_tm4c123gh6pm.o
-    0x20000010   0x00000968   0x00000008   Data   RW          211    .data               miros.o
-    0x20000018        -       0x00000140   Zero   RW          130    .bss                main.o
-    0x20000158        -       0x00000060   Zero   RW          271    .bss                c_w.l(libspace.o)
-    0x200001b8        -       0x00000010   Zero   RW          201    HEAP                startup_tm4c123gh6pm.o
-    0x200001c8        -       0x00000400   Zero   RW          200    STACK               startup_tm4c123gh6pm.o
+    0x20000000   0x00000a44   0x00000004   Data   RW           17    .data               bsp.o
+    0x20000004   0x00000a48   0x0000000c   Data   RW          138    .data               main.o
+    0x20000010   0x00000a54   0x00000004   Data   RW          173    .data               system_tm4c123gh6pm.o
+    0x20000014   0x00000a58   0x0000000a   Data   RW          226    .data               miros.o
+    0x2000001e   0x00000a62   0x00000002   PAD
+    0x20000020        -       0x000001e0   Zero   RW          137    .bss                main.o
+    0x20000200        -       0x00000084   Zero   RW          224    .bss                miros.o
+    0x20000284        -       0x00000060   Zero   RW          294    .bss                c_w.l(libspace.o)
+    0x200002e4   0x00000a62   0x00000004   PAD
+    0x200002e8        -       0x00000010   Zero   RW          213    HEAP                startup_tm4c123gh6pm.o
+    0x200002f8        -       0x00000400   Zero   RW          212    STACK               startup_tm4c123gh6pm.o
 
 
 ==============================================================================
@@ -678,16 +717,16 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       340         66          0          4          0      61991   bsp.o
-       108         24          0          8        320       1783   main.o
-       280         34          0          8          0       2239   miros.o
-       124         28        620          0       1040        960   startup_tm4c123gh6pm.o
-       608        140          0          4          0       3551   system_tm4c123gh6pm.o
+       368         76          0          4          0      63249   bsp.o
+       164         38          0         12        480       2344   main.o
+       424         60          8         10        132       4286   miros.o
+       124         28        620          0       1040        972   startup_tm4c123gh6pm.o
+       608        140          0          4          0       3595   system_tm4c123gh6pm.o
 
     ----------------------------------------------------------------------
-      1462        292        652         24       1360      70524   Object Totals
+      1690        342        660         32       1652      74446   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         2          0          0          0          0          0   (incl. Padding)
+         2          0          0          2          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -715,8 +754,8 @@ Image component sizes
          2          0          0          0          0         68   use_no_semi.o
 
     ----------------------------------------------------------------------
-       278         16          0          0         96        584   Library Totals
-         6          0          0          0          0          0   (incl. Padding)
+       278         16          0          0        100        584   Library Totals
+         6          0          0          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -725,7 +764,7 @@ Image component sizes
        272         16          0          0         96        584   c_w.l
 
     ----------------------------------------------------------------------
-       278         16          0          0         96        584   Library Totals
+       278         16          0          0        100        584   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -734,15 +773,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1740        308        652         24       1456      70064   Grand Totals
-      1740        308        652         24       1456      70064   ELF Image Totals
-      1740        308        652         24          0          0   ROM Totals
+      1968        358        660         32       1752      73726   Grand Totals
+      1968        358        660         32       1752      73726   ELF Image Totals
+      1968        358        660         32          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2392 (   2.34kB)
-    Total RW  Size (RW Data + ZI Data)              1480 (   1.45kB)
-    Total ROM Size (Code + RO Data + RW Data)       2416 (   2.36kB)
+    Total RO  Size (Code + RO Data)                 2628 (   2.57kB)
+    Total RW  Size (RW Data + ZI Data)              1784 (   1.74kB)
+    Total ROM Size (Code + RO Data + RW Data)       2660 (   2.60kB)
 
 ==============================================================================
 
