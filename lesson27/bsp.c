@@ -2,7 +2,7 @@
 #include <stdint.h>  /* Standard integers. WG14/N843 C99 Standard */
 
 #include "bsp.h"
-#include "miros.h"
+#include "qpc.h"
 #include "TM4C123GH6PM.h" /* the TM4C MCU Peripheral Access Layer (TI) */
 
 /* on-board LEDs */
@@ -13,12 +13,11 @@
 static uint32_t volatile l_tickCtr;
 
 void SysTick_Handler(void) {
-    OS_tick();
+  
+QXK_ISR_ENTRY(); /*informs QXK about entering an ISR */  
+	QF_TICK_X(0U,(void *)0);
 	
-	 __disable_irq();
-		OS_sched();
-	  __enable_irq();
-	
+QXK_ISR_EXIT();/*informs QXK about exiting an ISR */
 }
 
 void BSP_init(void) {
@@ -53,17 +52,25 @@ void BSP_ledGreenOff(void) {
 }
 
 
-void OS_onStartUp(void)
+void QF_onStartUp(void)
 {
 	 SystemCoreClockUpdate();
    SysTick_Config(SystemCoreClock / BSP_TICKS_PER_SEC);
-	NVIC_SetPriority(SysTick_IRQn,0U);
+	NVIC_SetPriority(SysTick_IRQn,QF_AWARE_ISR_CMSIS_PRI);
  
 }
-
-void OS_onIdle(void)
+void QF_onCleanup(void)
 {
 }
+
+void QF_onStartup(void)
+{
+}
+
+void QXK_onIdle(void)
+{
+}
+
 
 void Q_onAssert(char const *module, int loc) {
     /* TBD: damage control */

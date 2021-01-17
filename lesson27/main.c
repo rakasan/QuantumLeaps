@@ -1,61 +1,69 @@
 #include <stdint.h>
-#include "miros.h"
+#include "qpc.h"
 #include "bsp.h"
 
+Q_DEFINE_THIS_FILE
 uint32_t stack_blinky1[40];
-OSThread blinky1;
-void main_blinky1() {
+QXThread blinky1;
+void main_blinky1(QXThread * const me) {
     while (1) {
         BSP_ledGreenOn();
-        OS_delay(BSP_TICKS_PER_SEC / 4U);
+        QXThread_delay(BSP_TICKS_PER_SEC / 4U);
         BSP_ledGreenOff();
-        OS_delay(BSP_TICKS_PER_SEC * 3U / 4U);
+        QXThread_delay(BSP_TICKS_PER_SEC * 3U / 4U);
     }
 }
 
 uint32_t stack_blinky2[40];
-OSThread blinky2;	
-void main_blinky2() {
+QXThread blinky2;	
+void main_blinky2(QXThread * const me) {
     while (1) {
         BSP_ledBlueOn();
-        OS_delay(BSP_TICKS_PER_SEC / 2U);
+        QXThread_delay(BSP_TICKS_PER_SEC / 2U);
         BSP_ledBlueOff();
-        OS_delay(BSP_TICKS_PER_SEC / 3U);
+        QXThread_delay(BSP_TICKS_PER_SEC / 3U);
     }
 }
 
 uint32_t stack_blinky3[40];
-OSThread blinky3;	
-void main_blinky3() {
+QXThread blinky3;	
+void main_blinky3(QXThread * const me) {
     while (1) {
         BSP_ledRedOn();
-        OS_delay(BSP_TICKS_PER_SEC / 3U);
+        QXThread_delay(BSP_TICKS_PER_SEC / 3U);
         BSP_ledRedOff();
-        OS_delay(BSP_TICKS_PER_SEC *3U / 5U);
+        QXThread_delay(BSP_TICKS_PER_SEC *3U / 5U);
     }
 }
-uint32_t stack_IdleThread[40];
 
 /* background code: sequential with blocking version */
 int main() {
     BSP_init();
 		
-		OSInit(stack_IdleThread,sizeof(stack_IdleThread));
-	
-	OSThread_start(&blinky1,5,&main_blinky1,
-								stack_blinky1,sizeof(stack_blinky1));
+		QF_init();
+	QXThread_ctor(&blinky1,&main_blinky1,0);
+	QXTHREAD_START(&blinky1,
+									5,
+									(void *)0,0,
+								stack_blinky1,sizeof(stack_blinky1),
+									(void *)0);
 
-OSThread_start(&blinky2,2,&main_blinky2,
-								stack_blinky2,sizeof(stack_blinky2));
+	QXThread_ctor(&blinky2,&main_blinky2,0);
+	QXTHREAD_START(&blinky2,
+									6,
+									(void *)0,0,
+								stack_blinky2,sizeof(stack_blinky2),
+									(void *)0);
 
-/*OSThread_start(&blinky3,&main_blinky3,
-								stack_blinky3,sizeof(stack_blinky3));
-*/
-
-	//	NVIC_SetPriority(SysTick_IRQn,0U);
+	//QXThread_ctor(&blinky3,&main_blinky3,0);
+	//QXTHREAD_START(&blinky3,
+	//								5,
+	//								(void *)0,0,
+	//							stack_blinky3,sizeof(stack_blinky3),
+	//								(void *)0);
 		
 		/* Pass the control to the threads */
-		OS_run();
+		QF_run();
 
     //return 0;
 }
